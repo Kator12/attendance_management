@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FYP - Attendance</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1>Facial Recognition Attendance System</h1>
+      <h3>Attendance for <span id="currentDate"></span></h3>
+
+      <!-- Hamburger Menu -->
+      <div class="menu-container">
+        <div class="menu-icon" id="menuIcon">
+          <div class="menu-line"></div>
+          <div class="menu-line"></div>
+          <div class="menu-line"></div>
+        </div>
+        <div class="menu-content hidden" id="menuContent">
+          <ul>
+            <li><a href="#">View Past Attendance Data</a></li>
+            <li><a href="#">Download Attendance</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="attendance-container">
+      <h2>Attendance Data</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Student Name</th>
+            <th>ID Number</th>
+            <th>Timestamp</th>
+          </tr>
+        </thead>
+        <tbody id="attendanceData">
+          <!-- Attendance data will be dynamically added here -->
+        </tbody>
+      </table>
+      <button id="downloadButton">Download Attendance</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
