@@ -1,23 +1,21 @@
+
 document.addEventListener("DOMContentLoaded", function () {
   const attendanceData = document.getElementById("attendanceData");
   const downloadButton = document.getElementById("downloadButton");
   const currentDateElement = document.getElementById("currentDate");
   const recordNewAttendance = document.getElementById("recordAttendanceBtn");
-  const menuIcon = document.getElementById("menuIcon");
-  const menuContent = document.getElementById("menuContent");
-  const viewPastAttendance = document.getElementById("viewPastAttendance");
 
   // Define the base URL
-  const baseURL = "https://attendance-project-7hkr.onrender.com";
+  const baseURL = "https://attendance-management-4imm.onrender.com";
 
   function fetchAttendanceData() {
     axios
-      .get(baseURL + "/attendance")
+      .get(baseURL + "/attendance") // Prepend the base URL to the request URL
       .then((response) => {
         const data = response.data;
         // Clear previous attendance data
         attendanceData.innerHTML = "";
-        console.log("attendance data", fetchAttendanceData(screenTop(1)));
+
         // Add each attendance record to the table
         data.forEach((record) => {
           const row = document.createElement("tr");
@@ -87,23 +85,13 @@ document.addEventListener("DOMContentLoaded", function () {
     currentDateElement.textContent = formattedDate;
   }
 
-  // Add event listener to the download button
-  downloadButton.addEventListener("click", downloadAttendancePDF);
-  recordNewAttendance.addEventListener("click", recordNewAttendanceForToday);
-
   // Fetch attendance data and populate the table
   fetchAttendanceData();
   getCurrentDate();
 
-  // Toggle menu content visibility on menu icon click
-  menuIcon.addEventListener("click", function () {
-    menuContent.classList.toggle("hidden");
-  });
+  setInterval(fetchAttendanceData, 60000);
 
-  // Add event listener to the "View Past Attendance" menu item
-  viewPastAttendance.addEventListener("click", function () {
-    // Handle the action when "View Past Attendance" is clicked
-    // For example, redirect to a page showing past attendance data
-    window.location.href = "/past_attendance";
-  });
+  // Add event listener to the download button
+  downloadButton.addEventListener("click", downloadAttendancePDF);
+  recordNewAttendance.addEventListener("click", recordNewAttendanceForToday);
 });
