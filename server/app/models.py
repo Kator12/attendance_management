@@ -1,3 +1,4 @@
+
 from app import db
 from bson import ObjectId
 
@@ -43,5 +44,3 @@ class Attendance:
             # Log the error for debugging purposes
             print(f"Error retrieving attendance records: {e}")
             return []
-
-

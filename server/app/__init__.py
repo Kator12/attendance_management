@@ -3,7 +3,9 @@ from pymongo import MongoClient
 from flask_cors import CORS
 # import environment variables from a .env file
 from decouple import config
+app = Flask(__name__)
 
+print("Template Folder Path:", app.template_folder)
 
 # Initialize Flask app
 app = Flask(__name__, template_folder='templates', static_folder='static')

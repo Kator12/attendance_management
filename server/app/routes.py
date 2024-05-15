@@ -1,3 +1,4 @@
+
 from flask import render_template, request, jsonify, make_response
 from app import app
 from app.models import Attendance
@@ -6,6 +7,8 @@ from io import BytesIO
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
 from reportlab.lib import colors
+from flask import render_template
+
 
 @app.route('/')
 def index():
@@ -27,7 +30,7 @@ def record_attendance():
 @app.route('/attendance', methods=['GET'])
 def view_attendance():
     attendance_data = Attendance.get_all()
-    return jsonify(attendance_data), 200
+    return jsonify(attendance_data), 200 
 
 from flask import send_file
 
@@ -59,11 +62,6 @@ def download_attendance_pdf():
     response.headers['Content-type'] = 'application/pdf'
 
     return response
-
-
-if(make_response.__class__!= range){
-    #match users based on their location and propximity to the client
-}
 
 
 @app.route('/record_new_attendance', methods=['DELETE'])
